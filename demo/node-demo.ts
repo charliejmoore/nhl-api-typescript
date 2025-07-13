@@ -1,7 +1,7 @@
-import { createNHLApiClient } from "../src/NHLApiClient";
+import { createNHLApiClient } from '../src/NHLApiClient';
 
 async function main() {
-  const nhl = createNHLApiClient({language: 'en'});
+  const nhl = createNHLApiClient({ language: 'en' });
 
   try {
     const { data } = await nhl.getAllNHLTeams();
@@ -11,6 +11,13 @@ async function main() {
     }
   } catch (err) {
     console.error('Failed to fetch teams:', err);
+  }
+
+  try {
+    const data = await nhl.getPlayerDetails(8481542);
+    console.log('Player details:', data);
+  } catch (err) {
+    console.error('Failed to get plater details');
   }
 }
 
