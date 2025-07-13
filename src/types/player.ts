@@ -1,3 +1,5 @@
+import { Catches, Shoots, PositionCode } from './shared';
+
 export interface Player {
   birthCity: {
     default: string;
@@ -22,27 +24,3 @@ export interface Player {
   weightInKilograms: number;
   weightInPounds: number;
 }
-
-export type PositionCode =
-  /** Left wing. */
-  | 'L'
-  /** Right wing. */
-  | 'R'
-  /** Center. */
-  | 'C'
-  /** Defense. */
-  | 'D'
-  /** Goalie. */
-  | 'G';
-
-export type Shoots =
-  /** Left. */
-  | 'L'
-  /** Right. */
-  | 'R';
-
-export type Catches =
-  /** Left. */
-  | 'L'
-  /** Right. */
-  | 'R';
