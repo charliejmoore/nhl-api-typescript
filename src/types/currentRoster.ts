@@ -1,4 +1,4 @@
-import { Player } from './Player';
+import { Player } from './player';
 
 export interface CurrentRosterResponse {
   /** List of defensemen on the current roster. */
