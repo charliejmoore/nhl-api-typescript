@@ -1,7 +1,7 @@
-import { DEFAULT_BASE_URL_V1 } from '../constants';
-import { fetchJson } from '../http/fetchJson';
-import { CurrentRosterResponse } from '../types/currentRoster';
-import { TeamTriCode } from '../types/team';
+import { DEFAULT_BASE_URL_V1 } from '../../constants';
+import { fetchJson } from '../../http/fetchJson';
+import { CurrentRosterResponse } from '../../types/currentRoster';
+import { TeamTriCode } from '../../types/team';
 
 export interface GetCurrentRosterForTeamConfig {
   baseUrl?: string;

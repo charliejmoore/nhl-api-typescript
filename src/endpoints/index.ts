@@ -1,3 +1,3 @@
-export * from './currentRosterForTeam';
-export * from './playerDetails';
-export * from './teams';
+export * from './team';
+export * from './player';
+export * from './league';
