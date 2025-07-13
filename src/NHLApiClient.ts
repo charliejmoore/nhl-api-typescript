@@ -9,12 +9,14 @@ import { GameType } from './types/shared';
 
 export interface NHLApiClientConfig {
   baseUrl?: string;
+  /** Some NHL endpoints support languages other than English. */
   language?: string;
 }
 
 export function createNHLApiClient(config: NHLApiClientConfig = {}) {
   return {
-    getAllNHLTeams: () => getAllHLTeams(config),
+    getAllNHLTeams: () =>
+      getAllHLTeams({ language: config.language, baseUrl: config?.baseUrl }),
     getCurrentRosterForTeam: (teamCode: TeamTriCode) =>
       getCurrentRosterForTeam({ baseUrl: config?.baseUrl, teamCode }),
     getPlayerDetails: (playerId: number) =>
