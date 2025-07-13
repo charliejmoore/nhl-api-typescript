@@ -1,1 +1,2 @@
-export * from './NHLApiClient'
+export * from './NHLApiClient';
+export * from './types';

@@ -1,13 +1,16 @@
-import { getAllHLTeams } from "./endpoints/teams";
+import { getCurrentRosterForTeam } from './endpoints/currentRosterForTeam';
+import { getAllHLTeams } from './endpoints/teams';
+import { TeamTriCode } from './types/team';
 
 export interface NHLApiClientConfig {
   baseUrl?: string;
-  language?: string
+  language?: string;
 }
 
 export function createNHLApiClient(config: NHLApiClientConfig = {}) {
   return {
-    getAllNHLTeams: () => getAllHLTeams(config)
-    //getTeam: (id: number) => getTeam(id, config),
+    getAllNHLTeams: () => getAllHLTeams(config),
+    getCurrentRosterForTeam: (teamCode: TeamTriCode) =>
+      getCurrentRosterForTeam({ baseUrl: config?.baseUrl, teamCode }),
   };
 }
