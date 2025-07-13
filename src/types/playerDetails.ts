@@ -1,14 +1,6 @@
-import { PositionCode } from './shared';
+import { LocalizedString, PositionCode } from './shared';
 import { HomeRoadFlag } from './shared/homeRoad';
 import { TeamTriCode } from './team';
-
-/** Generic map for language-localized strings (e.g., default, fr). */
-export interface LocalizedString {
-  /** English/default value. */
-  default: string;
-  /** French value, if present. */
-  fr?: string;
-}
 
 /** NHL player draft details. */
 export interface DraftDetails {

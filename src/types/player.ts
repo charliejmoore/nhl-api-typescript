@@ -1,23 +1,17 @@
-import { Catches, Shoots, PositionCode } from './shared';
+import { Catches, Shoots, PositionCode, LocalizedString } from './shared';
 
 export interface Player {
-  birthCity: {
-    default: string;
-  };
+  birthCity: LocalizedString;
   birthCountry: string;
   /** A date string of the format "1993-09-14" */
   birthDate: string;
-  birthStateProvince: {
-    default: string;
-  };
+  birthStateProvince: LocalizedString;
   /** Url. */
   headshot: string;
   heightInCentimeters: number;
   heightInInches: number;
   id: number;
-  lastName: {
-    default: string;
-  };
+  lastName: LocalizedString;
   positionCode: PositionCode;
   shootsCatches: Shoots | Catches;
   sweaterNumber: number;
