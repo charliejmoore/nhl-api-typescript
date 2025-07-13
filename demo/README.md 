@@ -1,0 +1,18 @@
+# Demo
+
+This folder contains examples of using the `nhl-api-ts`.
+
+## Node Example
+
+Run with:
+`npx tsx node-demo.ts`
+
+## Browser Example
+
+This example React app shows how to use `nhl-api-ts` in a browser context.
+
+`cd demo/react-app`
+`npm install`
+`npm run dev`
+
+Then visit the local URL Vite gives you.
