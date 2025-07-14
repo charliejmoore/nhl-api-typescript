@@ -1,30 +1,32 @@
 import { HockeyPositionCode, LocalizedString } from './shared';
 import { TeamTriCode } from './team';
 
+/** Shape of data returned from `https://api-web.nhle.com/v1/skater-stats-leaders/current`. */
 export interface CurrentSkaterStatLeadersResponse {
-  /** List of leaders in short handed goals. */
+  /** List of current leaders in short handed goals. */
   goalsSh?: CurrentSkaterStatLeader[];
-  /** List of leaders in plus minus stat. */
+  /** List of current leaders in plus minus stat. */
   plusMinus?: CurrentSkaterStatLeader[];
-  /** List of leaders in assists. */
+  /** List of current leaders in assists. */
   assists?: CurrentSkaterStatLeader[];
-  /** List of leaders in power play goals. */
+  /** List of current leaders in power play goals. */
   goalsPp?: CurrentSkaterStatLeader[];
-  /** List of leaders in faceoff wins. */
+  /** List of current leaders in faceoff wins. */
   faceoffLeaders?: CurrentSkaterStatLeader[];
-  /** List of leaders in penalty mins. */
+  /** List of current leaders in penalty mins. */
   penaltyMins?: CurrentSkaterStatLeader[];
-  /** List of leaders in goals. */
+  /** List of current leaders in goals. */
   goals?: CurrentSkaterStatLeader[];
-  /** List of leaders in points. */
+  /** List of current leaders in points. */
   points?: CurrentSkaterStatLeader[];
-  /** List of leaders in time on ice. */
+  /** List of current leaders in time on ice. */
   toi?: CurrentSkaterStatLeader[];
 }
 
 /** Hockey statistics categories available for skater leader ranking. */
 export type SkaterStatLeaderCategory = keyof CurrentSkaterStatLeadersResponse;
 
+/** Individual player in the stat leader results. */
 export interface CurrentSkaterStatLeader {
   /** Unique identifier. */
   id: number;
