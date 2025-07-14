@@ -4,3 +4,4 @@ export * from './hockeyPositionCode';
 export * from './homeRoad';
 export * from './gameType';
 export * from './localizedString';
+export * from './currentStatLeader';

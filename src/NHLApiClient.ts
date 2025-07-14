@@ -7,6 +7,10 @@ import {
   getPlayerGameLogBySeason,
   getCurrentTeamStandings,
 } from './endpoints';
+import {
+  getCurrentGoalieStatLeaders,
+  GetCurrentGoalieStatLeadersConfig,
+} from './endpoints/player/goalies/getGoalieStatLeaders';
 import { TeamTriCode } from './types';
 import { GameType } from './types/shared';
 
@@ -55,5 +59,16 @@ export function createNHLApiClient(config: NHLApiClientConfig = {}) {
         limit,
         categories,
       }),
+
+    getCurrentGoalieStatLeaders: ({
+      categories,
+      limit,
+    }: GetCurrentGoalieStatLeadersConfig) => {
+      getCurrentGoalieStatLeaders({
+        baseUrl: config?.baseUrl,
+        categories,
+        limit,
+      });
+    },
   };
 }
