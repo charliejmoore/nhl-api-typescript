@@ -1,6 +1,8 @@
 import {
   getAllHLTeams,
   getCurrentRosterForTeam,
+  getCurrentSkaterStatLeaders,
+  GetCurrentSkaterStatLeadersConfig,
   getPlayerDetails,
   getPlayerGameLogBySeason,
 } from './endpoints';
@@ -17,10 +19,13 @@ export function createNHLApiClient(config: NHLApiClientConfig = {}) {
   return {
     getAllNHLTeams: () =>
       getAllHLTeams({ language: config.language, baseUrl: config?.baseUrl }),
+
     getCurrentRosterForTeam: (teamCode: TeamTriCode) =>
       getCurrentRosterForTeam({ baseUrl: config?.baseUrl, teamCode }),
+
     getPlayerDetails: (playerId: number) =>
       getPlayerDetails({ playerId, baseUrl: config?.baseUrl }),
+
     getPlayerGameLogBySeason: (
       playerId: number,
       season: number,
@@ -31,6 +36,16 @@ export function createNHLApiClient(config: NHLApiClientConfig = {}) {
         playerId,
         season,
         gameType,
+      }),
+
+    getCurrentSkaterStatLeaders: ({
+      categories,
+      limit,
+    }: GetCurrentSkaterStatLeadersConfig) =>
+      getCurrentSkaterStatLeaders({
+        baseUrl: config?.baseUrl,
+        limit,
+        categories,
       }),
   };
 }
