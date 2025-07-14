@@ -1,4 +1,10 @@
-import { LocalizedString, HockeyPositionCode, Shoots, Catches } from './shared';
+import {
+  LocalizedString,
+  HockeyPositionCode,
+  Shoots,
+  Catches,
+  GameType,
+} from './shared';
 import { HomeRoadFlag } from './shared/homeRoad';
 import { TeamTriCode } from './team';
 
@@ -18,37 +24,37 @@ export interface DraftDetails {
 
 /** Season/career stat line for regular season or playoffs. */
 export interface PlayerStatLine {
-  /** Number of assists. */
+  /** Number of assists the player had. */
   assists: number;
-  /** Number of goals, */
+  /** Number of goals the player made */
   goals: number;
-  /** Number of games played. */
+  /** Number of games the player played in. */
   gamesPlayed: number;
-  /** Number of points. */
+  /** Number of points (assists + goals) the player earned. */
   points: number;
   /** Penalty Infraction Minutes. */
   pim: number;
-  /** Plus minus metric. */
+  /** Plus/minus metric. Calculated by subtracting the total number of goals allowed by a player's team while the player is on the ice (at even strength or on the power play) from the total number of goals scored by the player's team while the player is on the ice (at even strength or short-handed). */
   plusMinus: number;
-  /** Number of shots. */
+  /** Number of shots the player took. A shot is counted if the following criteria are met: (1) player shoots the puck with the intention of scoring, (2) shot would have gone in if the goalie hadn't blocked it.*/
   shots: number;
-  /** Number of power play goals (PPG). */
+  /** Number of power play goals (PPG) the player made. */
   powerPlayGoals?: number;
-  /** Number of power play points. */
+  /** Number of power play points (goals + assists) the player earned. */
   powerPlayPoints?: number;
-  /** Number of shorthanded goals (SHG). */
+  /** Number of shorthanded goals (SHG) the player made. */
   shorthandedGoals?: number;
-  /** Number of shorthanded points. */
+  /** Number of shorthanded points (goals + assists) the player earned. */
   shorthandedPoints?: number;
-  /** Shooting percentage. */
+  /** The number of goals the player scored divided by their number of shots taken. */
   shootingPctg?: number;
-  /** Number of overtime goals. */
+  /** Number of overtime goals the player scored. */
   otGoals?: number;
-  /** Number of game winning goals. */
+  /** Number of game winning goals the player scored. */
   gameWinningGoals?: number;
   /** Average time on ice (i.e., "24:14", meaning 24 minutes, 14 seconds.). */
   avgToi?: string;
-  /** Faceoff win percentage. */
+  /** Player's faceoff win percentage. */
   faceoffWinningPctg?: number;
   sequence?: number;
   /** E.g., "NHL", "OHL", "WJC-20 D1A", etc. */
@@ -74,12 +80,15 @@ export interface SubSeasonStats {
   points: number;
   /** Penalty Infraction Minutes. */
   pim: number;
+  /** Plus/minus metric. Calculated by subtracting the total number of goals allowed by a player's team while the player is on the ice (at even strength or on the power play) from the total number of goals scored by the player's team while the player is on the ice (at even strength or short-handed). */
   plusMinus: number;
+  /** Number of shots the player took. A shot is counted if the following criteria are met: (1) player shoots the puck with the intention of scoring, (2) shot would have gone in if the goalie hadn't blocked it.*/
   shots: number;
   powerPlayGoals: number;
   powerPlayPoints: number;
   shorthandedGoals: number;
   shorthandedPoints: number;
+  /** The number of goals the player scored divided by their number of shots taken. */
   shootingPctg: number;
   /** Number of overtime goals. */
   otGoals: number;
@@ -98,28 +107,38 @@ export interface SeasonStatSummary {
 export interface FeaturedStats {
   /** Season (e.g., 20242025 meaning the 2024-2025 season). */
   season: number;
+  /** Regular season stats summary. */
   regularSeason: SeasonStatSummary;
 }
 
-/** Player's last 5 games stat line. */
+/** Player's stat line. Represents one of the last five games. */
 export interface LastGameStat {
+  /** The number of assists the player made. */
   assists: number;
+  /** The date of the game. */
   gameDate: string;
   gameId: number;
-  gameTypeId: number;
+  gameTypeId: GameType;
   goals: number;
+  /** Whether the game was home or away/road. */
   homeRoadFlag: HomeRoadFlag;
+  /** The player's opponent team abbreviation. E.g., "DET". */
   opponentAbbrev: TeamTriCode;
   /** Penalty Infraction Minutes. */
   pim: number;
+  /** Plus/minus metric. Calculated by subtracting the total number of goals allowed by a player's team while the player is on the ice (at even strength or on the power play) from the total number of goals scored by the player's team while the player is on the ice (at even strength or short-handed). */
   plusMinus: number;
+  /** Number of points the player earned. This is the number of goals + assists they had. */
   points: number;
   /** Number of power play goals. */
   powerPlayGoals: number;
   /** Number of shifts. */
   shifts: number;
+  /** Number of shorthanded goals. */
   shorthandedGoals: number;
+  /** Number of shots the player took. A shot is counted if the following criteria are met: (1) player shoots the puck with the intention of scoring, (2) shot would have gone in if the goalie hadn't blocked it.*/
   shots: number;
+  /** The player's team abbreviation. E.g., "VGK". */
   teamAbbrev: TeamTriCode;
   /** Time on ice (i.e., "24:17" meaning 24 mins 17 seconds). */
   toi: string;

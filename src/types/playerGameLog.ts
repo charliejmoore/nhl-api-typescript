@@ -21,7 +21,7 @@ export interface PlayerGameLogEntry {
   opponentCommonName: LocalizedString;
   /** Total points (goals + assists) the player earned in the game. */
   points: number;
-  /** Player's plus-minus rating for the game. */
+  /** Plus/minus metric. Calculated by subtracting the total number of goals allowed by a player's team while the player is on the ice (at even strength or on the power play) from the total number of goals scored by the player's team while the player is on the ice (at even strength or short-handed). */
   plusMinus: number;
   /** Number of power play goals the player scored in the game. */
   powerPlayGoals: number;
@@ -31,7 +31,7 @@ export interface PlayerGameLogEntry {
   gameWinningGoals: number;
   /** Number of overtime goals the player scored in the game. */
   otGoals: number;
-  /** Number of shots the player took in the game. */
+  /** Number of shots the player took. A shot is counted if the following criteria are met: (1) player shoots the puck with the intention of scoring, (2) shot would have gone in if the goalie hadn't blocked it.*/
   shots: number;
   /** Number of shifts the player played in the game. */
   shifts: number;

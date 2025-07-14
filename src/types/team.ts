@@ -1,11 +1,15 @@
 export interface Team {
+  /** Team unique id. */
   id: number;
+  /** Franchise id. */
   franchiseId: number;
   /** Full name of the NHL team. */
   fullName: string;
   /** League identifier. Appears to be an internal field because all NHL teams have 133 for this value. */
   leagueId: number;
+  /** The team's tricode. E.g., 'BOS' */
   rawTricode: TeamTriCode;
+  /** The team's tricode. E.g., 'BOS' */
   triCode: TeamTriCode;
 }
 
@@ -16,6 +20,7 @@ export interface TeamListResponse {
   total: number;
 }
 
+/** All Tricodes for NHL teams past and present. */
 export type TeamTriCode =
   /** Quebec Nordiques */
   | 'QUE'
