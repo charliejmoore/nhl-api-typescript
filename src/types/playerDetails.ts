@@ -1,4 +1,4 @@
-import { LocalizedString, PositionCode } from './shared';
+import { LocalizedString, HockeyPositionCode } from './shared';
 import { HomeRoadFlag } from './shared/homeRoad';
 import { TeamTriCode } from './team';
 
@@ -159,7 +159,7 @@ export interface PlayerDetailsResponse {
   /** Player's sweater (jersey) number. */
   sweaterNumber: number;
   /** Position abbreviation (e.g., "D" for defensemen). */
-  position: PositionCode;
+  position: HockeyPositionCode;
   /** Headshot image URL. */
   headshot: string;
   /** Action hero image URL. */

@@ -1,4 +1,4 @@
-import { Catches, Shoots, PositionCode, LocalizedString } from './shared';
+import { Catches, Shoots, HockeyPositionCode, LocalizedString } from './shared';
 
 export interface Player {
   birthCity: LocalizedString;
@@ -12,7 +12,7 @@ export interface Player {
   heightInInches: number;
   id: number;
   lastName: LocalizedString;
-  positionCode: PositionCode;
+  positionCode: HockeyPositionCode;
   shootsCatches: Shoots | Catches;
   sweaterNumber: number;
   weightInKilograms: number;

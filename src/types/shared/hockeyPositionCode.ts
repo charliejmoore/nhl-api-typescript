@@ -1,4 +1,4 @@
-export type PositionCode =
+export type HockeyPositionCode =
   /** Left wing. */
   | 'L'
   /** Right wing. */
