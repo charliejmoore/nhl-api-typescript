@@ -1,6 +1,6 @@
 import { currentTeams } from '../constants';
 import { TeamTriCode } from '../types';
 
-export const isCurrentTeam = (teamAbbreviation: TeamTriCode): boolean => {
+export const isTeamActive = (teamAbbreviation: TeamTriCode): boolean => {
   return currentTeams.includes(teamAbbreviation);
 };

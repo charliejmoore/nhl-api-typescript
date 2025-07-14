@@ -2,7 +2,7 @@ import { DEFAULT_BASE_URL_V1 } from '../../constants';
 import { fetchJson } from '../../http/fetchJson';
 import { CurrentRosterResponse } from '../../types/currentRoster';
 import { TeamTriCode } from '../../types/team';
-import { isCurrentTeam } from '../../utilities/isCurrentTeam';
+import { isTeamActive } from '../../utilities/isTeamActive';
 
 export interface GetCurrentRosterForTeamConfig {
   baseUrl?: string;
@@ -13,7 +13,7 @@ export interface GetCurrentRosterForTeamConfig {
 export function getCurrentRosterForTeam(
   config: GetCurrentRosterForTeamConfig
 ): Promise<CurrentRosterResponse> {
-  if (!isCurrentTeam(config.teamCode)) {
+  if (!isTeamActive(config.teamCode)) {
     throw Error(
       'Team abbreviation provided is not a currently active team, so it does not have a current roster.'
     );
