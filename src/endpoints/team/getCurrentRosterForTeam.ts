@@ -5,6 +5,7 @@ import { TeamTriCode } from '../../types/team';
 import { isTeamActive } from '../../utilities/isTeamActive';
 
 export interface GetCurrentRosterForTeamConfig {
+  /** Override API base URL (for testing, etc.) */
   baseUrl?: string;
   /** 3-letter team code (the triCode) (e.g., "FLA" for Florida Panthers). */
   teamCode: TeamTriCode;

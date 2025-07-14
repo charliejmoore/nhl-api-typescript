@@ -4,7 +4,9 @@ import { PlayerGameLogBySeasonResponse } from '../../types';
 import { GameType } from '../../types/shared';
 
 export interface GetPlayerGameLogBySeasonConfig {
+  /** Override API base URL (for testing, etc.) */
   baseUrl?: string;
+  /** The player's unique NHL ID. */
   playerId: number;
   /** A number like 20242025 for the 2024-2025 season. */
   season: number;

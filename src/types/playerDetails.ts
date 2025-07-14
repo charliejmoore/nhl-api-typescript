@@ -148,9 +148,9 @@ export interface PlayerDetailsResponse {
   playerId: number;
   /** Whether the player is currently active. */
   isActive: boolean;
-  /** Current team numeric ID. */
+  /** The player's current team numeric ID. */
   currentTeamId: number;
-  /** Current team tricode abbreviation (e.g., "DET"). */
+  /** The player's current team tricode abbreviation (e.g., "DET"). */
   currentTeamAbbrev: TeamTriCode;
   /** Team full name (localized). */
   fullTeamName: LocalizedString;
@@ -162,7 +162,7 @@ export interface PlayerDetailsResponse {
   firstName: LocalizedString;
   /** Last name (localized). */
   lastName: LocalizedString;
-  /** Badges or awards (always empty in this example). */
+  /** Badges or awards. */
   badges: string[];
   /** Team logo SVG URL. */
   teamLogo: string;
@@ -214,6 +214,6 @@ export interface PlayerDetailsResponse {
   last5Games: LastGameStat[];
   /** Season totals, for all known seasons/leagues (junior, minor, pro). */
   seasonTotals: SeasonTotal[];
-  /** The current full roster of this player's NHL team. */
+  /** The current full roster of this player's current NHL team. */
   currentTeamRoster: TeamRosterPlayer[];
 }

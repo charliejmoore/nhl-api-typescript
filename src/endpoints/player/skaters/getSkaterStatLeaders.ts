@@ -6,6 +6,7 @@ import {
 } from '../../../types';
 
 export interface GetCurrentSkaterStatLeadersConfig {
+  /** Override API base URL (for testing, etc.) */
   baseUrl?: string;
   /** Categories you want to see stat leaders in. These are ORs not ANDs, so you will see a list of top "goals" and a list of top "assists" separately if you give those two categories. */
   categories?: SkaterStatLeaderCategory[];

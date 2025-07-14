@@ -3,7 +3,9 @@ import { fetchJson } from '../../http/fetchJson';
 import { PlayerDetailsResponse } from '../../types';
 
 export interface GetPlayerDetailsConfig {
+  /** Override API base URL (for testing, etc.) */
   baseUrl?: string;
+  /** The player's unique NHL ID. */
   playerId: number;
 }
 

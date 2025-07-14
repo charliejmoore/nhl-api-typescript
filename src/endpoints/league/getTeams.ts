@@ -3,7 +3,9 @@ import { fetchJson } from '../../http/fetchJson';
 import type { TeamListResponse } from '../../types/team';
 
 export interface GetAllHLTeamsConfig {
+  /** Override API base URL (for testing, etc.) */
   baseUrl?: string;
+  /** Language you want results in. ISO language code https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes. */
   language?: string;
 }
 

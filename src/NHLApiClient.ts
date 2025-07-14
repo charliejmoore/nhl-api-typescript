@@ -10,6 +10,7 @@ import { TeamTriCode } from './types';
 import { GameType } from './types/shared';
 
 export interface NHLApiClientConfig {
+  /** Override API base URL (for testing, etc.) */
   baseUrl?: string;
   /** Some NHL endpoints support languages other than English. */
   language?: string;

@@ -11,39 +11,39 @@ export interface PlayerGameLogEntry {
   homeRoadFlag: HomeRoadFlag;
   /** Game date (YYYY-MM-DD). */
   gameDate: string;
-  /** Number of goals scored in the game. */
+  /** Number of goals the player scored in the game. */
   goals: number;
-  /** Number of assists in the game. */
+  /** Number of assists the player had in the game. */
   assists: number;
   /** Team common name for the player's team (localized). E.g., "Maple Leafs", "Blues". */
   commonName: LocalizedString;
   /** Team common name for the opponent (localized). E.g., "Hurricanes", "Panthers". */
   opponentCommonName: LocalizedString;
-  /** Total points (goals + assists) in the game. */
+  /** Total points (goals + assists) the player earned in the game. */
   points: number;
-  /** Plus-minus rating for the game. */
+  /** Player's plus-minus rating for the game. */
   plusMinus: number;
-  /** Number of power play goals in the game. */
+  /** Number of power play goals the player scored in the game. */
   powerPlayGoals: number;
-  /** Number of power play points in the game. */
+  /** Number of power play points the player earned in the game. */
   powerPlayPoints: number;
-  /** Number of game-winning goals in the game. */
+  /** Number of game-winning goals the player scored in the game. */
   gameWinningGoals: number;
-  /** Number of overtime goals in the game. */
+  /** Number of overtime goals the player scored in the game. */
   otGoals: number;
-  /** Number of shots taken in the game. */
+  /** Number of shots the player took in the game. */
   shots: number;
-  /** Number of shifts played in the game. */
+  /** Number of shifts the player played in the game. */
   shifts: number;
-  /** Number of shorthanded goals in the game. */
+  /** Number of shorthanded goals the player scored in the game. */
   shorthandedGoals: number;
-  /** Number of shorthanded points in the game. */
+  /** Number of shorthanded points the player earned in the game. */
   shorthandedPoints: number;
   /** Abbreviation for the opponent team (e.g., "TOR"). */
   opponentAbbrev: TeamTriCode;
-  /** Penalty minutes in the game. */
+  /** Penalty minutes the player earned in the game. */
   pim: number;
-  /** Time on ice (mm:ss). */
+  /** Time the player spent on ice (mm:ss) during this game. */
   toi: string;
 }
 
@@ -55,7 +55,7 @@ export interface PlayerStatsSeasonSummary {
   gameTypes: GameType[];
 }
 
-/** Complete NHL player game log for a specific season. */
+/** Complete NHL player game log for a specific season. The shape of the data returned from https://api-web.nhle.com/v1/player/${playerId}/game-log/${season}/${gameType}. */
 export interface PlayerGameLogBySeasonResponse {
   /** The NHL season for this log (e.g., 20242025). */
   seasonId: number;
