@@ -4,3 +4,4 @@ export * from './player';
 export * from './playerDetails';
 export * from './playerGameLog';
 export * from './skaterStatLeaders';
+export * from './teamStandings';

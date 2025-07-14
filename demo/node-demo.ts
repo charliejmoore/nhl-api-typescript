@@ -53,6 +53,13 @@ async function main() {
   } catch (err) {
     console.error('Failed to get stat details:', err);
   }
+
+  try {
+    const data = await nhl.getCurrentTeamStandings();
+    console.log('Current standings:', data);
+  } catch (err) {
+    console.error('Failed to get standings:', err);
+  }
 }
 
 main();

@@ -5,6 +5,7 @@ import {
   GetCurrentSkaterStatLeadersConfig,
   getPlayerDetails,
   getPlayerGameLogBySeason,
+  getCurrentTeamStandings,
 } from './endpoints';
 import { TeamTriCode } from './types';
 import { GameType } from './types/shared';
@@ -21,6 +22,9 @@ export function createNHLApiClient(config: NHLApiClientConfig = {}) {
     /** League */
     getAllNHLTeams: () =>
       getAllHLTeams({ language: config.language, baseUrl: config?.baseUrl }),
+
+    getCurrentTeamStandings: () =>
+      getCurrentTeamStandings({ baseUrl: config?.baseUrl }),
 
     /** Teams */
     getCurrentRosterForTeam: (teamCode: TeamTriCode) =>
