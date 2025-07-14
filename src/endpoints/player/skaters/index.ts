@@ -1,1 +1,1 @@
-export * from './skaterStatLeaders';
+export * from './getSkaterStatLeaders';

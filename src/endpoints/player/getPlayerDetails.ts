@@ -1,6 +1,6 @@
 import { DEFAULT_BASE_URL_V1 } from '../../constants';
 import { fetchJson } from '../../http/fetchJson';
-import { PlayerDetailsResponse } from '../../types/';
+import { PlayerDetailsResponse } from '../../types';
 
 export interface GetPlayerDetailsConfig {
   baseUrl?: string;

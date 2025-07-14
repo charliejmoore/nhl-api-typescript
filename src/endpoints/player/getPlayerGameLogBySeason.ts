@@ -1,6 +1,6 @@
 import { DEFAULT_BASE_URL_V1 } from '../../constants';
 import { fetchJson } from '../../http/fetchJson';
-import { PlayerGameLogBySeasonResponse } from '../../types/';
+import { PlayerGameLogBySeasonResponse } from '../../types';
 import { GameType } from '../../types/shared';
 
 export interface GetPlayerGameLogBySeasonConfig {

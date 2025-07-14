@@ -1,3 +1,3 @@
-export * from './playerDetails';
-export * from './playerGameLogBySeason';
+export * from './getPlayerDetails';
+export * from './getPlayerGameLogBySeason';
 export * from './skaters';
