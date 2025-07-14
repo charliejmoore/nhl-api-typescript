@@ -17,12 +17,15 @@ export interface NHLApiClientConfig {
 
 export function createNHLApiClient(config: NHLApiClientConfig = {}) {
   return {
+    /** League */
     getAllNHLTeams: () =>
       getAllHLTeams({ language: config.language, baseUrl: config?.baseUrl }),
 
+    /** Teams */
     getCurrentRosterForTeam: (teamCode: TeamTriCode) =>
       getCurrentRosterForTeam({ baseUrl: config?.baseUrl, teamCode }),
 
+    /** Players */
     getPlayerDetails: (playerId: number) =>
       getPlayerDetails({ playerId, baseUrl: config?.baseUrl }),
 

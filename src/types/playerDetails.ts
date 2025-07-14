@@ -1,4 +1,4 @@
-import { LocalizedString, HockeyPositionCode } from './shared';
+import { LocalizedString, HockeyPositionCode, Shoots, Catches } from './shared';
 import { HomeRoadFlag } from './shared/homeRoad';
 import { TeamTriCode } from './team';
 
@@ -6,8 +6,8 @@ import { TeamTriCode } from './team';
 export interface DraftDetails {
   /** Draft year (e.g., 2009). */
   year: number;
-  /** Team tricode abbreviation for drafting team (e.g., ATL). */
-  teamAbbrev: string;
+  /** Team tricode abbreviation for drafting team (e.g., COL). */
+  teamAbbrev: TeamTriCode;
   /** Draft round (e.g., 4). */
   round: number;
   /** Pick number within the round. */
@@ -18,23 +18,33 @@ export interface DraftDetails {
 
 /** Season/career stat line for regular season or playoffs. */
 export interface PlayerStatLine {
+  /** Number of assists. */
   assists: number;
+  /** Number of goals, */
   goals: number;
   /** Number of games played. */
   gamesPlayed: number;
+  /** Number of points. */
   points: number;
   /** Penalty Infraction Minutes. */
   pim: number;
+  /** Plus minus metric. */
   plusMinus: number;
+  /** Number of shots. */
   shots: number;
+  /** Number of power play goals (PPG). */
   powerPlayGoals?: number;
+  /** Number of power play points. */
   powerPlayPoints?: number;
+  /** Number of shorthanded goals (SHG). */
   shorthandedGoals?: number;
+  /** Number of shorthanded points. */
   shorthandedPoints?: number;
   /** Shooting percentage. */
   shootingPctg?: number;
   /** Number of overtime goals. */
   otGoals?: number;
+  /** Number of game winning goals. */
   gameWinningGoals?: number;
   /** Average time on ice (i.e., "24:14", meaning 24 minutes, 14 seconds.). */
   avgToi?: string;
@@ -181,7 +191,7 @@ export interface PlayerDetailsResponse {
   /** Birth country (ISO code, e.g., "CAN"). */
   birthCountry: string;
   /** Shooting/catching hand ("L" or "R"). */
-  shootsCatches: string;
+  shootsCatches: Shoots | Catches;
   /** NHL draft details. */
   draftDetails: DraftDetails;
   /** URL-friendly player slug (e.g., "ben-chiarot-8475279"). */

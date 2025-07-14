@@ -36,7 +36,7 @@ export interface CurrentSkaterStatLeader {
   sweaterNumber: number;
   /** URL to NHL image png asset. */
   headshot: string;
-  /** The abbreviation for the player's team. */
+  /** The abbreviation for the player's team (e.g., "BOS"). */
   teamAbbrev: TeamTriCode;
   /** E.g., "Rangers", "Golden Knights". */
   teamName: LocalizedString;
