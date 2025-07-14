@@ -33,6 +33,5 @@ export function getCurrentSkaterStatLeaders(
     }
   }
 
-  console.log('url: ', url);
   return fetchJson<CurrentSkaterStatLeadersResponse>(url);
 }
