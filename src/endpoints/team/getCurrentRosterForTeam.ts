@@ -4,6 +4,9 @@ import { CurrentRosterResponse } from '../../types/currentRoster';
 import { TeamTriCode } from '../../types/team';
 import { isTeamActive } from '../../utilities/isTeamActive';
 
+/**
+ * Configuration options for {@link getCurrentRosterForTeam}.
+ */
 export interface GetCurrentRosterForTeamConfig {
   /** Override API base URL (for testing, etc.) */
   baseUrl?: string;

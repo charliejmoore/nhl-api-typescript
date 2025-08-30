@@ -1,3 +1,4 @@
+/** Data for a single NHL team. */
 export interface Team {
   /** Team unique id. */
   id: number;
@@ -13,6 +14,7 @@ export interface Team {
   triCode: TeamTriCode;
 }
 
+/** Data shape of response to `${baseUrl}/${language}/team` endpoint. */
 export interface TeamListResponse {
   /** List of NHL teams (past and present). */
   data: Team[];

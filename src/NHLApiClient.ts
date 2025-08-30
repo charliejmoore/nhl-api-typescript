@@ -31,21 +31,64 @@ export interface NHLApiClientConfig {
 }
 
 export interface NHLApiClient {
+  /**
+   * Fetches the list of all NHL teams.
+   * Allows overriding the API base URL (e.g., for testing) and setting a preferred
+   * language for team data. Defaults to English (`"en"`) if no language is provided.
+   * @memberof NHLApiClient
+   */
   getAllNHLTeams: () => Promise<TeamListResponse>;
+  /**
+   * Fetches the current NHL team standings.
+   * Retrieves the latest league standings snapshot (e.g., division, conference,
+   * and league-wide rankings) from the NHL API.
+   * The endpoint returns standings as they are **right now**.
+   * @memberof NHLApiClient
+   */
   getCurrentTeamStandings: () => Promise<CurrentTeamStandingsResponse>;
+  /**
+   * Fetches the current NHL roster for a given team.
+   *
+   * Validates that the provided team code corresponds to an active NHL team.
+   * If the team is inactive (e.g., defunct or relocated), this function throws an error.
+   * @memberof NHLApiClient
+   */
   getCurrentRosterForTeam: (
     teamCode: TeamTriCode
   ) => Promise<CurrentRosterResponse>;
+  /**
+   * Fetches detailed information for a specific NHL player.
+   * Retrieves the player's profile, stats, and other landing-page data from the NHL API.
+   * @memberof NHLApiClient
+   */
   getPlayerDetails: (playerId: number) => Promise<PlayerDetailsResponse>;
+  /**
+   * Fetches a player's game log for a given season.
+   * Retrieves per-game performance data (goals, assists, ice time, etc.) for
+   * the specified player, season, and game type.
+   * @memberof NHLApiClient
+   */
   getPlayerGameLogBySeason: (
     playerId: number,
     season: number,
     gameType: GameType
   ) => Promise<PlayerGameLogBySeasonResponse>;
+  /**
+   * Fetches the current NHL skater stat leaders.
+   * Retrieves leaderboard data for one or more skater stat categories.
+   * By default, returns top leaders across the entire league for the current season.
+   * @memberof NHLApiClient
+   */
   getCurrentSkaterStatLeaders: (
     categories,
     limit
   ) => Promise<CurrentSkaterStatLeadersResponse>;
+  /**
+   * Fetches the current NHL goalie stat leaders.
+   * Retrieves leaderboard data for one or more goalie stat categories.
+   * By default, returns top leaders across the entire league for the current season.
+   * @memberof NHLApiClient
+   */
   getCurrentGoalieStatLeaders: (
     categories,
     limit
