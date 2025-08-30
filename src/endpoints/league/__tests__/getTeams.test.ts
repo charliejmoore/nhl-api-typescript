@@ -1,12 +1,13 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { getAllHLTeams } from '../getTeams';
+import { getAllNHLTeams } from '../getTeams';
 import * as fetchJsonModule from '../../../http/fetchJson';
 import { DEFAULT_BASE_URL_STATS } from '../../../constants';
+import { TeamListResponse } from '../../../types';
 
 vi.mock('../../http/fetchJson');
 
-describe('getAllHLTeams', () => {
-  const mockResponse = {
+describe('getAllNHLTeams', () => {
+  const mockResponse: TeamListResponse = {
     data: [],
     total: 32,
   };
@@ -19,7 +20,7 @@ describe('getAllHLTeams', () => {
   });
 
   it('calls fetchJson with default baseUrl and language when no config is provided', async () => {
-    await getAllHLTeams();
+    await getAllNHLTeams();
     expect(fetchJsonModule.fetchJson).toHaveBeenCalledWith(
       `${DEFAULT_BASE_URL_STATS}/en/team`
     );
@@ -27,7 +28,7 @@ describe('getAllHLTeams', () => {
 
   it('uses custom baseUrl if provided', async () => {
     const baseUrl = 'https://custom.api/nhl';
-    await getAllHLTeams({ baseUrl });
+    await getAllNHLTeams({ baseUrl });
     expect(fetchJsonModule.fetchJson).toHaveBeenCalledWith(
       `${baseUrl}/en/team`
     );
@@ -35,7 +36,7 @@ describe('getAllHLTeams', () => {
 
   it('uses custom language if provided', async () => {
     const language = 'fr';
-    await getAllHLTeams({ language });
+    await getAllNHLTeams({ language });
     expect(fetchJsonModule.fetchJson).toHaveBeenCalledWith(
       `${DEFAULT_BASE_URL_STATS}/${language}/team`
     );
@@ -44,14 +45,14 @@ describe('getAllHLTeams', () => {
   it('uses both custom baseUrl and language if provided', async () => {
     const baseUrl = 'https://custom.api/nhl';
     const language = 'fi';
-    await getAllHLTeams({ baseUrl, language });
+    await getAllNHLTeams({ baseUrl, language });
     expect(fetchJsonModule.fetchJson).toHaveBeenCalledWith(
       `${baseUrl}/${language}/team`
     );
   });
 
   it('returns the mock response', async () => {
-    const result = await getAllHLTeams();
+    const result = await getAllNHLTeams();
     expect(result).toBe(mockResponse);
   });
 });

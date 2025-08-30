@@ -1,5 +1,5 @@
 import {
-  getAllHLTeams,
+  getAllNHLTeams,
   getCurrentRosterForTeam,
   getCurrentSkaterStatLeaders,
   GetCurrentSkaterStatLeadersConfig,
@@ -25,7 +25,7 @@ export function createNHLApiClient(config: NHLApiClientConfig = {}) {
   return {
     /** League */
     getAllNHLTeams: () =>
-      getAllHLTeams({ language: config.language, baseUrl: config?.baseUrl }),
+      getAllNHLTeams({ language: config.language, baseUrl: config?.baseUrl }),
 
     getCurrentTeamStandings: () =>
       getCurrentTeamStandings({ baseUrl: config?.baseUrl }),
