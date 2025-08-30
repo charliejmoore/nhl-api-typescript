@@ -24,6 +24,8 @@ export default defineConfig({
         'coverage/**',
         '**/*.d.ts',
         '**/vitest.config.*',
+        'src/types/**',
+        'src/**/index.ts',
       ],
     },
   },
