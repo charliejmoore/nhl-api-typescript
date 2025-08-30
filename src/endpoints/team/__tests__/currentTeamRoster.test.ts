@@ -3,7 +3,7 @@ import { getCurrentTeamRoster } from '../getCurrentTeamRoster';
 import { fetchJson } from '../../../http/fetchJson';
 import { isTeamActive } from '../../../utilities/isTeamActive';
 import { DEFAULT_BASE_URL_V1 } from '../../../constants';
-import { RosterResponse } from '../../../types';
+import { RosterResponse, TeamTriCode } from '../../../types';
 
 vi.mock('../../../http/fetchJson');
 vi.mock('../../../utilities/isTeamActive');
@@ -22,7 +22,9 @@ describe('getCurrentTeamRoster', () => {
   it('throws if the team is not active', () => {
     vi.mocked(isTeamActive).mockReturnValue(false);
 
-    expect(() => getCurrentTeamRoster({ teamCode: 'WHA' as any })).toThrow(
+    expect(() =>
+      getCurrentTeamRoster({ teamCode: 'WHA' as TeamTriCode })
+    ).toThrow(
       'Team abbreviation provided is not a currently active team, so it does not have a current roster.'
     );
   });

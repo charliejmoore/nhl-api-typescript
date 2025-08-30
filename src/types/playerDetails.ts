@@ -145,7 +145,7 @@ export interface LastGameStat {
 }
 
 /** Season totals (across all leagues/years). */
-export interface SeasonTotal extends PlayerStatLine {}
+export interface SeasonTotal extends PlayerStatLine {} // eslint-disable-line @typescript-eslint/no-empty-object-type
 
 /** Current team roster listing (minimal). */
 export interface TeamRosterPlayer {

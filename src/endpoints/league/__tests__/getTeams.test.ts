@@ -15,7 +15,7 @@ describe('getAllNHLTeams', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     vi.spyOn(fetchJsonModule, 'fetchJson').mockResolvedValue(
-      mockResponse as any
+      mockResponse as TeamListResponse
     );
   });
 

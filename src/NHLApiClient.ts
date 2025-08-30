@@ -86,20 +86,20 @@ export interface NHLApiClient {
    * By default, returns top leaders across the entire league for the current season.
    * @memberof NHLApiClient
    */
-  getCurrentSkaterStatLeaders: (
+  getCurrentSkaterStatLeaders: ({
     categories,
-    limit
-  ) => Promise<CurrentSkaterStatLeadersResponse>;
+    limit,
+  }: GetCurrentSkaterStatLeadersConfig) => Promise<CurrentSkaterStatLeadersResponse>;
   /**
    * Fetches the current NHL goalie stat leaders.
    * Retrieves leaderboard data for one or more goalie stat categories.
    * By default, returns top leaders across the entire league for the current season.
    * @memberof NHLApiClient
    */
-  getCurrentGoalieStatLeaders: (
+  getCurrentGoalieStatLeaders: ({
     categories,
-    limit
-  ) => Promise<CurrentGoalieStatLeadersResponse>;
+    limit,
+  }: GetCurrentGoalieStatLeadersConfig) => Promise<CurrentGoalieStatLeadersResponse>;
 }
 
 export function createNHLApiClient(

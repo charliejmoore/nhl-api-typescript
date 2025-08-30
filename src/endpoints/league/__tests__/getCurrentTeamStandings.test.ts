@@ -187,7 +187,7 @@ describe('getCurrentTeamStandings', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     vi.spyOn(fetchJsonModule, 'fetchJson').mockResolvedValue(
-      mockResponse as any
+      mockResponse as CurrentTeamStandingsResponse
     );
   });
 

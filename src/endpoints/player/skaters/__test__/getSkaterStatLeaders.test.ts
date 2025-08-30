@@ -2,11 +2,12 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { DEFAULT_BASE_URL_V1 } from '../../../../constants';
 import { getCurrentSkaterStatLeaders } from '../getSkaterStatLeaders';
 import * as fetchJsonModule from '../../../../http/fetchJson';
+import { CurrentSkaterStatLeadersResponse } from '../../../../types';
 
 vi.mock('../../../http/fetchJson');
 
 describe('getCurrentSkaterStatLeaders', () => {
-  const mockResponse = {
+  const mockResponse: CurrentSkaterStatLeadersResponse = {
     goals: [],
     assists: [],
     points: [],
@@ -15,7 +16,7 @@ describe('getCurrentSkaterStatLeaders', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     vi.spyOn(fetchJsonModule, 'fetchJson').mockResolvedValue(
-      mockResponse as any
+      mockResponse as CurrentSkaterStatLeadersResponse
     );
   });
 

@@ -2,17 +2,22 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { getPlayerGameLogBySeason } from '../getPlayerGameLogBySeason';
 import * as fetchJsonModule from '../../../http/fetchJson';
 import { DEFAULT_BASE_URL_V1 } from '../../../constants';
-import type { GameType } from '../../../types/shared';
+import { PlayerGameLogBySeasonResponse, GameType } from '../../../types';
 
 vi.mock('../../http/fetchJson');
 
 describe('getPlayerGameLogBySeason', () => {
-  const mockResponse = { playerId: 8478402, season: 20242025, gameLog: [] };
+  const mockResponse: PlayerGameLogBySeasonResponse = {
+    seasonId: 0,
+    gameTypeId: GameType.REGULAR_SEASON,
+    playerStatsSeasons: [],
+    gameLog: [],
+  };
 
   beforeEach(() => {
     vi.clearAllMocks();
     vi.spyOn(fetchJsonModule, 'fetchJson').mockResolvedValue(
-      mockResponse as any
+      mockResponse as PlayerGameLogBySeasonResponse
     );
   });
 

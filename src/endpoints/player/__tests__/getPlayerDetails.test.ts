@@ -2,16 +2,18 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { getPlayerDetails } from '../getPlayerDetails';
 import * as fetchJsonModule from '../../../http/fetchJson';
 import { DEFAULT_BASE_URL_V1 } from '../../../constants';
+import { PlayerDetailsResponse } from '../../../types';
+import { getMockPlayerDetails } from '../../../mocks';
 
 vi.mock('../../http/fetchJson');
 
 describe('getPlayerDetails', () => {
-  const mockResponse = { playerId: 123, name: 'Test Player' };
+  const mockResponse: PlayerDetailsResponse = getMockPlayerDetails();
 
   beforeEach(() => {
     vi.clearAllMocks();
     vi.spyOn(fetchJsonModule, 'fetchJson').mockResolvedValue(
-      mockResponse as any
+      mockResponse as PlayerDetailsResponse
     );
   });
 
