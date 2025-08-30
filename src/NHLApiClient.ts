@@ -6,12 +6,12 @@ import {
   getPlayerDetails,
   getPlayerGameLogBySeason,
   getCurrentTeamStandings,
+  getTeamRosterBySeason,
 } from './endpoints';
 import {
   getCurrentGoalieStatLeaders,
   GetCurrentGoalieStatLeadersConfig,
 } from './endpoints/player/goalies/getGoalieStatLeaders';
-import { getTeamRosterBySeason } from './endpoints/team/getTeamRosterBySeason';
 import {
   CurrentGoalieStatLeadersResponse,
   RosterResponse,
