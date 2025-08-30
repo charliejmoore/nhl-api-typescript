@@ -5,9 +5,9 @@ import { TeamTriCode } from '../../types/team';
 import { isTeamActive } from '../../utilities/isTeamActive';
 
 /**
- * Configuration options for {@link getCurrentRosterForTeam}.
+ * Configuration options for {@link getCurrentTeamRoster}.
  */
-export interface GetCurrentRosterForTeamConfig {
+export interface GetCurrentTeamRosterConfig {
   /** Override API base URL (for testing, etc.) */
   baseUrl?: string;
   /** 3-letter team code (the triCode) (e.g., "FLA" for Florida Panthers or "NYR" for New York Rangers). */
@@ -20,7 +20,7 @@ export interface GetCurrentRosterForTeamConfig {
  * Validates that the provided team code corresponds to an active NHL team.
  * If the team is inactive (e.g., defunct or relocated), this function throws an error.
  *
- * @param {GetCurrentRosterForTeamConfig} config - Configuration object.
+ * @param {GetCurrentTeamRosterConfig} config - Configuration object.
  * @param {string} [config.baseUrl] - Optional API base URL to override the default.
  * @param {TeamTriCode} config.teamCode - The team's 3-letter code (triCode).
  *
@@ -43,8 +43,8 @@ export interface GetCurrentRosterForTeamConfig {
  * });
  * ```
  */
-export function getCurrentRosterForTeam(
-  config: GetCurrentRosterForTeamConfig
+export function getCurrentTeamRoster(
+  config: GetCurrentTeamRosterConfig
 ): Promise<CurrentRosterResponse> {
   if (!isTeamActive(config.teamCode)) {
     throw Error(

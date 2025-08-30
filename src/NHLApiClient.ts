@@ -1,6 +1,6 @@
 import {
   getAllNHLTeams,
-  getCurrentRosterForTeam,
+  getCurrentTeamRoster,
   getCurrentSkaterStatLeaders,
   GetCurrentSkaterStatLeadersConfig,
   getPlayerDetails,
@@ -53,7 +53,7 @@ export interface NHLApiClient {
    * If the team is inactive (e.g., defunct or relocated), this function throws an error.
    * @memberof NHLApiClient
    */
-  getCurrentRosterForTeam: (
+  getCurrentTeamRoster: (
     teamCode: TeamTriCode
   ) => Promise<CurrentRosterResponse>;
   /**
@@ -107,10 +107,10 @@ export function createNHLApiClient(
       getCurrentTeamStandings({ baseUrl: config?.baseUrl }),
 
     /** Teams */
-    getCurrentRosterForTeam: (
+    getCurrentTeamRoster: (
       teamCode: TeamTriCode
     ): Promise<CurrentRosterResponse> =>
-      getCurrentRosterForTeam({ baseUrl: config?.baseUrl, teamCode }),
+      getCurrentTeamRoster({ baseUrl: config?.baseUrl, teamCode }),
 
     /** Players */
     getPlayerDetails: (playerId: number): Promise<PlayerDetailsResponse> =>

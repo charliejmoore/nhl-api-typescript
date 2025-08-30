@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { getCurrentRosterForTeam } from '../getCurrentRosterForTeam';
+import { getCurrentTeamRoster } from '../getCurrentTeamRoster';
 import { fetchJson } from '../../../http/fetchJson';
 import { isTeamActive } from '../../../utilities/isTeamActive';
 import { DEFAULT_BASE_URL_V1 } from '../../../constants';
@@ -7,7 +7,7 @@ import { DEFAULT_BASE_URL_V1 } from '../../../constants';
 vi.mock('../../../http/fetchJson');
 vi.mock('../../../utilities/isTeamActive');
 
-describe('getCurrentRosterForTeam', () => {
+describe('getCurrentTeamRoster', () => {
   const mockResponse = {
     defensemen: [],
     forwards: [],
@@ -21,7 +21,7 @@ describe('getCurrentRosterForTeam', () => {
   it('throws if the team is not active', () => {
     vi.mocked(isTeamActive).mockReturnValue(false);
 
-    expect(() => getCurrentRosterForTeam({ teamCode: 'WHA' as any })).toThrow(
+    expect(() => getCurrentTeamRoster({ teamCode: 'WHA' as any })).toThrow(
       'Team abbreviation provided is not a currently active team, so it does not have a current roster.'
     );
   });
@@ -33,7 +33,7 @@ describe('getCurrentRosterForTeam', () => {
     const baseUrl = 'https://some.api';
     const teamCode = 'FLA';
 
-    const result = await getCurrentRosterForTeam({ baseUrl, teamCode });
+    const result = await getCurrentTeamRoster({ baseUrl, teamCode });
     expect(fetchJson).toHaveBeenCalledWith(
       `${baseUrl}/roster/${teamCode}/current`
     );
@@ -46,7 +46,7 @@ describe('getCurrentRosterForTeam', () => {
 
     const teamCode = 'FLA';
 
-    const result = await getCurrentRosterForTeam({ teamCode });
+    const result = await getCurrentTeamRoster({ teamCode });
     expect(fetchJson).toHaveBeenCalledWith(
       `${DEFAULT_BASE_URL_V1}/roster/${teamCode}/current`
     );

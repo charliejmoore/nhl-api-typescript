@@ -1,1 +1,1 @@
-export * from './getCurrentRosterForTeam';
+export * from './getCurrentTeamRoster';
