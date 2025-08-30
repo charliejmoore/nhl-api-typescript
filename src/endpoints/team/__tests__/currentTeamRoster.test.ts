@@ -3,12 +3,13 @@ import { getCurrentTeamRoster } from '../getCurrentTeamRoster';
 import { fetchJson } from '../../../http/fetchJson';
 import { isTeamActive } from '../../../utilities/isTeamActive';
 import { DEFAULT_BASE_URL_V1 } from '../../../constants';
+import { RosterResponse } from '../../../types';
 
 vi.mock('../../../http/fetchJson');
 vi.mock('../../../utilities/isTeamActive');
 
 describe('getCurrentTeamRoster', () => {
-  const mockResponse = {
+  const mockResponse: RosterResponse = {
     defensemen: [],
     forwards: [],
     goalies: [],

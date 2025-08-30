@@ -11,9 +11,10 @@ import {
   getCurrentGoalieStatLeaders,
   GetCurrentGoalieStatLeadersConfig,
 } from './endpoints/player/goalies/getGoalieStatLeaders';
+import { getTeamRosterBySeason } from './endpoints/team/getTeamRosterBySeason';
 import {
   CurrentGoalieStatLeadersResponse,
-  CurrentRosterResponse,
+  RosterResponse,
   CurrentSkaterStatLeadersResponse,
   CurrentTeamStandingsResponse,
   PlayerDetailsResponse,
@@ -53,9 +54,15 @@ export interface NHLApiClient {
    * If the team is inactive (e.g., defunct or relocated), this function throws an error.
    * @memberof NHLApiClient
    */
-  getCurrentTeamRoster: (
-    teamCode: TeamTriCode
-  ) => Promise<CurrentRosterResponse>;
+  getCurrentTeamRoster: (teamCode: TeamTriCode) => Promise<RosterResponse>;
+  /**
+   * Fetches the roster for a given NHL team in a specific season.
+   * @memberof NHLApiClient
+   */
+  getTeamRosterBySeason: (
+    teamCode: TeamTriCode,
+    season: number
+  ) => Promise<RosterResponse>;
   /**
    * Fetches detailed information for a specific NHL player.
    * Retrieves the player's profile, stats, and other landing-page data from the NHL API.
@@ -107,10 +114,18 @@ export function createNHLApiClient(
       getCurrentTeamStandings({ baseUrl: config?.baseUrl }),
 
     /** Teams */
-    getCurrentTeamRoster: (
-      teamCode: TeamTriCode
-    ): Promise<CurrentRosterResponse> =>
+    getCurrentTeamRoster: (teamCode: TeamTriCode): Promise<RosterResponse> =>
       getCurrentTeamRoster({ baseUrl: config?.baseUrl, teamCode }),
+
+    getTeamRosterBySeason: (
+      teamCode: TeamTriCode,
+      season: number
+    ): Promise<RosterResponse> =>
+      getTeamRosterBySeason({
+        baseUrl: config?.baseUrl,
+        teamCode,
+        season,
+      }),
 
     /** Players */
     getPlayerDetails: (playerId: number): Promise<PlayerDetailsResponse> =>
