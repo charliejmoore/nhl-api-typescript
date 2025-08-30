@@ -11,7 +11,16 @@ import {
   getCurrentGoalieStatLeaders,
   GetCurrentGoalieStatLeadersConfig,
 } from './endpoints/player/goalies/getGoalieStatLeaders';
-import { TeamTriCode } from './types';
+import {
+  CurrentGoalieStatLeadersResponse,
+  CurrentRosterResponse,
+  CurrentSkaterStatLeadersResponse,
+  CurrentTeamStandingsResponse,
+  PlayerDetailsResponse,
+  PlayerGameLogBySeasonResponse,
+  TeamListResponse,
+  TeamTriCode,
+} from './types';
 import { GameType } from './types/shared';
 
 export interface NHLApiClientConfig {
@@ -21,28 +30,54 @@ export interface NHLApiClientConfig {
   language?: string;
 }
 
-export function createNHLApiClient(config: NHLApiClientConfig = {}) {
+export interface NHLApiClient {
+  getAllNHLTeams: () => Promise<TeamListResponse>;
+  getCurrentTeamStandings: () => Promise<CurrentTeamStandingsResponse>;
+  getCurrentRosterForTeam: (
+    teamCode: TeamTriCode
+  ) => Promise<CurrentRosterResponse>;
+  getPlayerDetails: (playerId: number) => Promise<PlayerDetailsResponse>;
+  getPlayerGameLogBySeason: (
+    playerId: number,
+    season: number,
+    gameType: GameType
+  ) => Promise<PlayerGameLogBySeasonResponse>;
+  getCurrentSkaterStatLeaders: (
+    categories,
+    limit
+  ) => Promise<CurrentSkaterStatLeadersResponse>;
+  getCurrentGoalieStatLeaders: (
+    categories,
+    limit
+  ) => Promise<CurrentGoalieStatLeadersResponse>;
+}
+
+export function createNHLApiClient(
+  config: NHLApiClientConfig = {}
+): NHLApiClient {
   return {
     /** League */
-    getAllNHLTeams: () =>
+    getAllNHLTeams: (): Promise<TeamListResponse> =>
       getAllNHLTeams({ language: config.language, baseUrl: config?.baseUrl }),
 
-    getCurrentTeamStandings: () =>
+    getCurrentTeamStandings: (): Promise<CurrentTeamStandingsResponse> =>
       getCurrentTeamStandings({ baseUrl: config?.baseUrl }),
 
     /** Teams */
-    getCurrentRosterForTeam: (teamCode: TeamTriCode) =>
+    getCurrentRosterForTeam: (
+      teamCode: TeamTriCode
+    ): Promise<CurrentRosterResponse> =>
       getCurrentRosterForTeam({ baseUrl: config?.baseUrl, teamCode }),
 
     /** Players */
-    getPlayerDetails: (playerId: number) =>
+    getPlayerDetails: (playerId: number): Promise<PlayerDetailsResponse> =>
       getPlayerDetails({ playerId, baseUrl: config?.baseUrl }),
 
     getPlayerGameLogBySeason: (
       playerId: number,
       season: number,
       gameType: GameType
-    ) =>
+    ): Promise<PlayerGameLogBySeasonResponse> =>
       getPlayerGameLogBySeason({
         baseUrl: config?.baseUrl,
         playerId,
@@ -53,7 +88,7 @@ export function createNHLApiClient(config: NHLApiClientConfig = {}) {
     getCurrentSkaterStatLeaders: ({
       categories,
       limit,
-    }: GetCurrentSkaterStatLeadersConfig) =>
+    }: GetCurrentSkaterStatLeadersConfig): Promise<CurrentSkaterStatLeadersResponse> =>
       getCurrentSkaterStatLeaders({
         baseUrl: config?.baseUrl,
         limit,
@@ -63,12 +98,11 @@ export function createNHLApiClient(config: NHLApiClientConfig = {}) {
     getCurrentGoalieStatLeaders: ({
       categories,
       limit,
-    }: GetCurrentGoalieStatLeadersConfig) => {
+    }: GetCurrentGoalieStatLeadersConfig): Promise<CurrentGoalieStatLeadersResponse> =>
       getCurrentGoalieStatLeaders({
         baseUrl: config?.baseUrl,
         categories,
         limit,
-      });
-    },
+      }),
   };
 }
