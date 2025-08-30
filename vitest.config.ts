@@ -26,6 +26,7 @@ export default defineConfig({
         '**/vitest.config.*',
         'src/types/**',
         'src/**/index.ts',
+        'src/mocks/**',
       ],
     },
   },
