@@ -1,4 +1,5 @@
 # 🏒 nhl-api-typescript
+[![CI](https://github.com/charliejmoore/nhl-api-typescript/actions/workflows/ci.yml/badge.svg)](https://github.com/charliejmoore/nhl-api-typescript/actions/workflows/ci.yml)
 
 A [TypeScript](https://www.typescriptlang.org/) client for accessing the officially undocumented [NHL](https://www.nhl.com/) API (unofficially, the API has been documented, see: [NHL-API-Reference](https://github.com/Zmalski/NHL-API-Reference) for the example I referenced for this project).
 
